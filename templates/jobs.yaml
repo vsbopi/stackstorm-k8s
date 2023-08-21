@@ -484,7 +484,9 @@ spec:
     {{- end }}
 
 {{- end }}
-{{- if $.Values.st2.packs.volumes.enabled }}
+{{- range .Values.jobs.extra_hooks -}}
+  {{- $name := print "extra-helm-hook" (include "stackstorm-ha.hyphenPrefix" (required "You must name each entry in jobs.extra_hooks." .name)) }}
+  {{- if not ($.Values.jobs.skip | has $name) }}
 ---
 apiVersion: batch/v1
 kind: Job
