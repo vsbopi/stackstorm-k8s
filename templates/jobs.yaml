@@ -508,6 +508,7 @@ spec:
         {{- toYaml $.Values.jobs.annotations | nindent 8 }}
       {{- end }}
     spec:
+      restartPolicy: "OnFailure"
       imagePullSecrets:
       {{- if $.Values.image.pullSecret }}
       - name: {{ $.Values.image.pullSecret }}
