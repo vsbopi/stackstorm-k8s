@@ -11,7 +11,7 @@ image:
   # utilityImage: "myprivateregsistry.local/ext.docker.io/library/busybox:1.28"
   utilityImage: ""
   # Image pull policy
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # st2 image repository. Set this to override the default ("stackstorm").
   # Applies to all st2 containers except st2packs (which has its own setting).
   # This also does not impact dependencies such as mongo or redis, which have
