@@ -167,6 +167,8 @@ st2:
     # Some generic examples are listed under st2.packs.volumes.packs below.
     volumes:
       enabled: true
+      accessModes:
+        - ReadWriteMany
 
       packs: 
         # mounted to /opt/stackstorm/packs
