@@ -197,7 +197,9 @@ st2:
         # virtualenvs volume definition is required if st2.packs.volumes is enabled
         # see the examples under st2.packs.volumes.packs
 
-      configs: {}
+      configs: 
+        persistentVolumeClaim:
+          claimName: pvc-st2-pack-configs
         # mounted to /opt/stackstorm/configs
         # configs volume definition is optional, but only used if st2.packs.volumes is enabled
         # Anything in `st2.packs.configs` will be added to this volume automatically on helm install/upgrade.
