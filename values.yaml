@@ -166,15 +166,15 @@ st2:
     # Please consult the documentation for your cluster's storage solution.
     # Some generic examples are listed under st2.packs.volumes.packs below.
     volumes:
-      enabled: false
+      enabled: true
 
-      packs: {}
+      packs: 
         # mounted to /opt/stackstorm/packs
         # packs volume definition is required if st2.packs.volumes is enabled
 
         # example using persistentVolumeClaim:
-        #persistentVolumeClaim:
-        #  claimName: pvc-st2-packs
+        persistentVolumeClaim:
+          claimName: pvc-st2-packs
 
         # example using NFS:
         #nfs:
@@ -190,7 +190,9 @@ st2:
         #    clusterNamespace: rook-ceph
         #    path: /st2/packs
 
-      virtualenvs: {}
+      virtualenvs: 
+        persistentVolumeClaim:
+          claimName: pvc-st2-virtualenvs
         # mounted to /opt/stackstorm/virtualenvs
         # virtualenvs volume definition is required if st2.packs.volumes is enabled
         # see the examples under st2.packs.volumes.packs
