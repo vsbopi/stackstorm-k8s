@@ -142,8 +142,8 @@ st2:
           url: "https://company.atlassian.net"
           auth_method: "basic"
           poll_interval: 30
-          project: "MY_PROJECT"
-          verify: True
+          project: "DSG-Test"
+          verify: False
           username: "vsbopi1@gmail.com"
           password: "ATATT3xFfGF0Dpv4rD45eGQj-701_Ful3ANxa6l-Zqppaw9JkEnTCP0BwG92P_m-9635nGXWOpfpcQkGIo8utmD4RvfvkUNaWQc8ItTqFzkJVYLewn-XOGy9vgRmGVYm9PD1aHg_1msZ2kbYwXpfPgEi_OGR8uR497gcf5yMQb7xhXyyYT37l1A=9EF2189C"
     # Custom packs images settings.
