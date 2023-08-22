@@ -11,7 +11,7 @@ image:
   # utilityImage: "myprivateregsistry.local/ext.docker.io/library/busybox:1.28"
   utilityImage: ""
   # Image pull policy
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
   # st2 image repository. Set this to override the default ("stackstorm").
   # Applies to all st2 containers except st2packs (which has its own setting).
   # This also does not impact dependencies such as mongo or redis, which have
@@ -137,25 +137,17 @@ st2:
       core.yaml: |
         ---
         # example core pack config yaml
-      jira.yaml: |
-        ---
-          url: "https://company.atlassian.net"
-          auth_method: "basic"
-          poll_interval: 30
-          project: "DSG-Test"
-          verify: False
-          username: "vsbopi1@gmail.com"
-          password: "ATATT3xFfGF0Dpv4rD45eGQj-701_Ful3ANxa6l-Zqppaw9JkEnTCP0BwG92P_m-9635nGXWOpfpcQkGIo8utmD4RvfvkUNaWQc8ItTqFzkJVYLewn-XOGy9vgRmGVYm9PD1aHg_1msZ2kbYwXpfPgEi_OGR8uR497gcf5yMQb7xhXyyYT37l1A=9EF2189C"
+
     # Custom packs images settings.
     #
     # For each given st2packs container you can define repository, name, tag and pullPolicy for this image below.
     # Multiple pack images can help when dealing with frequent updates by only rebuilding smaller images for desired packs
     # E.g. having all desired StackStorm-Exchange packs in one image and several custom packs in additional images
-    images:
-      - repository: vsbopi
-        name: st2packs
-        tag: 1.0
-        pullPolicy: Always
+    images: []
+      #- repository: index.docker.io/stackstorm
+      #  name: st2packs
+      #  tag: example
+      #  pullPolicy: IfNotPresent
       # Optional name of the imagePullSecret if your custom packs image is hosted by a private Docker registry
       #  pullSecret: st2packs-auth
 
