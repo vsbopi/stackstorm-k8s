@@ -11,7 +11,7 @@ image:
   # utilityImage: "myprivateregsistry.local/ext.docker.io/library/busybox:1.28"
   utilityImage: ""
   # Image pull policy
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # st2 image repository. Set this to override the default ("stackstorm").
   # Applies to all st2 containers except st2packs (which has its own setting).
   # This also does not impact dependencies such as mongo or redis, which have
@@ -137,7 +137,16 @@ st2:
       core.yaml: |
         ---
         # example core pack config yaml
-
+      jira.yaml: |
+        ---
+        # example core pack config yaml
+          url: "https://vsbopi.atlassian.net"
+          auth_method: "basic"
+          poll_interval: 30
+          project: "DSG-Test"
+          verify: False
+          username: "vsbopi1@gmail.com"
+          password: "ATATT3xFfGF0Dpv4rD45eGQj-701_Ful3ANxa6l-Zqppaw9JkEnTCP0BwG92P_m-9635nGXWOpfpcQkGIo8utmD4RvfvkUNaWQc8ItTqFzkJVYLewn-XOGy9vgRmGVYm9PD1aHg_1msZ2kbYwXpfPgEi_OGR8uR497gcf5yMQb7xhXyyYT37l1A=9EF2189C"
     # Custom packs images settings.
     #
     # For each given st2packs container you can define repository, name, tag and pullPolicy for this image below.
