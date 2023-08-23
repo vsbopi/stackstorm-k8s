@@ -1,0 +1,39 @@
+Release "stackstorm-dev" has been upgraded. Happy Helming!
+NAME: stackstorm-dev
+LAST DEPLOYED: Wed Aug 23 02:45:34 2023
+NAMESPACE: stackstorm-dev
+STATUS: deployed
+REVISION: 6
+NOTES:
+Congratulations! You have just deployed StackStorm HA!
+
+  ███████╗████████╗██████╗     ██╗  ██╗ █████╗      ██████╗ ██╗  ██╗
+  ██╔════╝╚══██╔══╝╚════██╗    ██║  ██║██╔══██╗    ██╔═══██╗██║ ██╔╝
+  ███████╗   ██║    █████╔╝    ███████║███████║    ██║   ██║█████╔╝
+  ╚════██║   ██║   ██╔═══╝     ██╔══██║██╔══██║    ██║   ██║██╔═██╗
+  ███████║   ██║   ███████╗    ██║  ██║██║  ██║    ╚██████╔╝██║  ██╗
+  ╚══════╝   ╚═╝   ╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝     ╚═════╝ ╚═╝  ╚═╝
+
+1. Get the StackStorm Web UI URL:
+
+NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+      Watch the status with "kubectl get service stackstorm-dev-st2web -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'"
+
+export ST2WEB_IP=$(kubectl get service stackstorm-dev-st2web -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+echo https://${ST2WEB_IP}/
+
+2. Get the password needed to login:
+kubectl get --namespace stackstorm-dev -o jsonpath="{.data.ST2_AUTH_PASSWORD}" secret stackstorm-dev-st2-auth | base64 --decode
+
+3. Login with this username and the password retrieved above:
+username: st2admin
+
+4. Use st2 CLI:
+export ST2CLIENT=$(kubectl get --namespace stackstorm-dev pod -l app.kubernetes.io/name=st2client,app.kubernetes.io/instance=stackstorm-dev -o jsonpath="{.items[0].metadata.name}")
+kubectl exec -it ${ST2CLIENT} --namespace stackstorm-dev -- st2 --version
+
+-----------------------------------------------------
+Thanks for trying StackStorm!
+Need help?
+* Forum: https://forum.stackstorm.com/
+* Slack: https://stackstorm.com/#community
